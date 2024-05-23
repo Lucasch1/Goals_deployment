@@ -233,14 +233,14 @@
                     token.transfer(participants[_goalId][i], val);
                 }
                 else {
-                    uint v = (bets[_goalId][participants[_goalId][i]] * partFreq / goalFreq);
+                    uint v = (bets[_goalId][participants[_goalId][i]] * partFreq / goalFreq); // Aqui o negocio pega, 
                     premNParts = premNParts + v;
                     token.transfer(participants[_goalId][i], v);
                 }
             }
 
-            uint prize = goals[_goalId].totalBet;
-            uint prizeGoals = (prize - premCompParts - premNParts - premPremParts) / 2;
+            uint prize = goals[_goalId].totalBet;                                                                     //300
+            uint prizeGoals = (prize - premCompParts - premNParts - premPremParts) / 2;                               //300 - 100 = 200
             uint prizePerPart;
             if (numPremParts == 0) {
                 prizePerPart = prizeGoals;

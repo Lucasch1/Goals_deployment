@@ -2,9 +2,17 @@ import { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 import "@nomicfoundation/hardhat-verify";
 import "dotenv/config";
+import "hardhat-gas-reporter";
 
 const config: HardhatUserConfig = {
   networks: {
+
+    // hardhat: {
+    //   forking: {
+    //     url: `https://polygon-mainnet.infura.io/v3/${process.env.PROJECT_ID}` || "",
+    //   },
+    // },
+
     sepolia: {
       url: `https://sepolia.infura.io/v3/${process.env.PROJECT_ID}` || "",
       chainId: 11155111,
@@ -26,6 +34,14 @@ const config: HardhatUserConfig = {
         mnemonic: process.env.MNEMONIC || "",
       },
     },
+  },
+
+  gasReporter: {
+    currency: 'BRL',
+    coinmarketcap: process.env.COINMARKETCAP_API_KEY || "",
+    L1: "polygon",
+    enabled: true,
+    outputFile: 'gas-report.txt',
   },
 
 
